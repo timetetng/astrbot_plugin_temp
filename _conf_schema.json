@@ -1,0 +1,50 @@
+{
+  "enabled": {
+    "type": "bool",
+    "description": "是否启用定时温度告警功能。",
+    "default": true
+  },
+  "check_interval_minutes": {
+    "type": "int",
+    "description": "定时检查硬件温度的周期（单位：分钟）。",
+    "hint": "设置每隔多少分钟检查一次温度。建议不要设置得太频繁，例如 5 分钟或以上。",
+    "default": 5
+  },
+  "trend_window_minutes": {
+    "type": "int",
+    "description": "计算温度变化趋势的时间窗口（单位：分钟）。",
+    "hint": "系统会分析此时间窗口内的温度数据来判断上升或下降趋势。建议设置为 check_interval_minutes 的倍数，例如 30 分钟。",
+    "default": 30
+  },
+  "alert_groups": {
+    "type": "list",
+    "description": "接收告警消息的群聊列表。",
+    "hint": "填写群聊的 `unified_msg_origin`。您可以创建一个临时指令，在群内触发后打印 event.unified_msg_origin 来获取此值。"
+  },
+  "thresholds": {
+    "type": "object",
+    "description": "各硬件的温度告警阈值（单位：°C）。当实际温度超过设定值时会发送告警。",
+    "items": {
+      "CPU": {
+        "type": "float",
+        "description": "CPU 温度阈值",
+        "default": 85.0
+      },
+      "Motherboard": {
+        "type": "float",
+        "description": "主板温度阈值",
+        "default": 60.0
+      },
+      "WIFI": {
+        "type": "float",
+        "description": "网卡温度阈值",
+        "default": 80.0
+      },
+      "NVMe": {
+        "type": "float",
+        "description": "硬盘温度阈值",
+        "default": 70.0
+      }
+    }
+  }
+}
