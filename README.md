@@ -34,7 +34,7 @@
 # Debian/Ubuntu 系统
 sudo apt update
 sudo apt install lm-sensors
-sudo sensors-detect # 按照提示操作，通常一路回车即可
+sudo sensors-detect 
 
 # CentOS/RHEL 系统
 sudo yum install lm_sensors
